@@ -1,0 +1,12 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+ <PropertyGroup><ProjectGuid>{7CB55F0E-5A88-49BF-9EBD-E074DDC6935B}</ProjectGuid></PropertyGroup>
+ <ItemGroup><Projects Include="WorbyServicesLib.dproj"><Dependencies/></Projects><Projects Include="WorbyService.dproj"><Dependencies>WorbyServicesLib.dproj</Dependencies></Projects><Projects Include="WorbyServicesUI.dproj"><Dependencies>WorbyServicesLib.dproj</Dependencies></Projects></ItemGroup>
+ <ProjectExtensions><Borland.Personality>Default.Personality.12</Borland.Personality><Borland.ProjectType/><BorlandProject><Default.Personality/></BorlandProject></ProjectExtensions>
+ <Target Name="WorbyServicesLib"><MSBuild Projects="WorbyServicesLib.dproj"/></Target>
+ <Target Name="WorbyService"><MSBuild Projects="WorbyService.dproj"/></Target>
+ <Target Name="WorbyServicesUI"><MSBuild Projects="WorbyServicesUI.dproj"/></Target>
+ <Target Name="Build"><CallTarget Targets="WorbyServicesLib;WorbyService;WorbyServicesUI"/></Target>
+ <Target Name="Clean"><MSBuild Projects="WorbyServicesLib.dproj;WorbyService.dproj;WorbyServicesUI.dproj" Targets="Clean"/></Target>
+ <Target Name="Make"><MSBuild Projects="WorbyServicesLib.dproj;WorbyService.dproj;WorbyServicesUI.dproj" Targets="Make"/></Target>
+ <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
